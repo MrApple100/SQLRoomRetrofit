@@ -1,11 +1,13 @@
-package ru.mrapple100.sqlroom
+package ru.mrapple100.sqlroom.local
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
+import ru.mrapple100.sqlroom.local.Derevo
 
 @Dao
 interface DerevoDAO {
@@ -22,5 +24,15 @@ interface DerevoDAO {
     @Delete
     fun deleteDerevo(derevo: Derevo): Unit
 
+
+    @Transaction
+    @Query("SELECT * FROM Derevo")
+    fun getAllDerevoWithPhrase(): List<DerevoWithPhrase>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertPhrase(phrase: Phrase)
+
+    @Query("SELECT * FROM Phrase")
+    fun getAllPhrase(): List<Phrase>
 
 }
