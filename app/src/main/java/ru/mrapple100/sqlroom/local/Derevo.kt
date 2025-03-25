@@ -1,4 +1,4 @@
-package ru.mrapple100.sqlroom
+package ru.mrapple100.sqlroom.local
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -10,6 +10,7 @@ data class Derevo(
     val id: Int,
     val material: String,
     //@ColumnInfo(name = "rub")
-    val price: Float
+    val price: Float,
     //val Factory// тоже entity
+    val phraseId: Int
 )
